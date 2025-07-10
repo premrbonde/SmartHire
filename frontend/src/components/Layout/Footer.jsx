@@ -66,7 +66,7 @@ const Footer = () => {
   return (
     <footer style={footerStyle}>
       <div style={styles.container}>
-        <div style={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved by Abhishek.</div>
+        <div style={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved by Prem.</div>
         <div style={styles.socialLinks}>
           <Link 
             to="https://github.com/premrbonde" 
