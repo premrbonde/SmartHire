@@ -38,6 +38,7 @@ To get a local copy up and running, follow these simple steps.
    git clone https://github.com/premrbonde/SmartHire.git
 
 2. Install NPM packages:
+   ```sh
    cd SmartHire
    cd backend
    npm install
@@ -46,6 +47,7 @@ To get a local copy up and running, follow these simple steps.
 
 3. Set up environment variables:
    Create a config.env file inside the backend/config/ directory and add the following:
+      ```sh
       PORT=4000
       CLOUDINARY_API_KEY=your_key
       CLOUDINARY_API_SECRET=your_secret
@@ -58,18 +60,22 @@ To get a local copy up and running, follow these simple steps.
       
       Replace the values with your real credentials.
 
-5. Run the backend server:
+4. Run the backend server:
+   ```sh
    cd backend
    npm run dev
 
-6. Run the frontend:
+5. Run the frontend:
+   ```sh
    cd ../frontend
    npm run dev
 
-7. Open your browser and visit: 
+6. Open your browser and visit: 
+   ```sh
    http://localhost:5173
 
-8. To enable Gemini AI chat:
+7. To enable Gemini AI chat:
+   ```sh
    Open frontend/src/components/Chatbox.jsx
 
    Replace YOUR_API_KEY in:
