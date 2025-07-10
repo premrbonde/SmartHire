@@ -1,95 +1,79 @@
-# Job Portal App with MERN Stack
+# SmartHire – AI-Powered Job Portal (MERN Stack)
 
-A comprehensive job portal application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. This application allows users to browse job listings, apply for jobs, and manage their applications seamlessly.
+A comprehensive job hiring portal built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. SmartHire allows job seekers to explore job listings, apply with their resume, and interact with an integrated Gemini AI chatbot for career guidance. Employers can post jobs and manage applications with ease.
 
 ## Features
 
-- **User Authentication:** Secure authentication using JWT (JSON Web Tokens) for both job seekers and employers.
-- **Job Listings:** Browse through a wide range of job listings fetched from MongoDB.
-- **Application Management:** Job seekers can manage their job applications, and employers can view and manage received applications.
-- **Responsive Design:** Ensures a seamless experience across all devices.
+- **User Authentication:** Secure JWT-based login system with roles (Job Seeker & Employer)
+- **Job Management:** Employers can post, update, delete, and manage job listings.
+- **Application Tracking:** Job seekers can apply with resume files and track applications.
+- **Cloudinary Integration:** Secure resume uploads and storage.
+- **Gemini AI Chatbox:** Users can chat with Google's Gemini-powered assistant for resume feedback, career advice, and job insights.
+- **Responsive Design:** Fully responsive UI for desktop and mobile devices.
 
 ## Technologies Used
 
-- **Frontend:** React.js, React Router, Bootstrap
+- **Frontend:** React.js, React Router, Tailwind CSS
 - **Backend:** Node.js, Express.js, MongoDB
-- **Authentication:** JWT (JSON Web Tokens), Bcrypt (for password hash)
-- **Image Upload:** Cloudinary for storing and managing uploaded images
-- **Deployment:** Vercel (frontend), Render(backend), MongoDB Atlas (database)
+- **Authentication:** JWT (JSON Web Tokens), Bcrypt
+- **File Uploads:** Cloudinary
+- **AI Chatbot:** Gemini API (Google's LLM)
+- **Deployment:** Vercel (frontend), Render (backend), MongoDB Atlas (database)
 
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- Node.js installed on your machine with latest version or v22.2.0 above
-- MongoDB Atlas account (or local MongoDB server)
-- Cloudinary account for image storage
+- Node.js v18+ or v22+
+- MongoDB Atlas account or local MongoDB server
+- Cloudinary account for image/resume storage
+- Google Gemini API key (free from Google AI Studio)
 
 ### Installation
 
 1. Clone the repo:
    ```sh
-   git clone https://github.com/exclusiveabhi/react-job-portal.git
-   ```
-2. Install NPM packages:
+   git clone https://github.com/premrbonde/SmartHire.git
 
-   ```sh
-   cd react-job-portal
+2. Install NPM packages:
+   cd SmartHire
    cd backend
    npm install
-   cd..
-   cd frontend
+   cd ../frontend
    npm install
-   ```
 
-3. ## If you don't want to change the`.env` credentials skip step 4 and move to step 5.
+3. Set up environment variables:
+   Create a config.env file inside the backend/config/ directory and add the following:
+      PORT=4000
+      CLOUDINARY_API_KEY=your_key
+      CLOUDINARY_API_SECRET=your_secret
+      CLOUDINARY_CLOUD_NAME=your_cloud_name
+      FRONTEND_URL=http://localhost:5173
+      DB_URL=mongodb://127.0.0.1:27017/smarthire
+      JWT_SECRET_KEY=your_jwt_secret
+      JWT_EXPIRE=7d
+      COOKIE_EXPIRE=7
+      
+      Replace the values with your real credentials.
 
-4. Set up environment variables:
-
-   - Create a `config.env` file after creating a `config folder` in the backend directory, containing the following variables:
-
-   ```env
-   PORT=
-   CLOUDINARY_API_KEY=
-   CLOUDINARY_API_SECRET=
-   CLOUDINARY_CLOUD_NAME=
-   FRONTEND_URL=
-   DB_URL=
-   JWT_SECRET_KEY=
-   JWT_EXPIRE=
-   COOKIE_EXPIRE=
-   ```
-
-   Replace each value with your specific configuration details.
-
-5. Run the application backend (make sure you are in `/backend` directory) :
-
-   ```sh
-   node server.js
-   ```
-
-6. Run the application frontend (make sure you are in `/frontend` directory) :
-   ```sh
+5. Run the backend server:
+   cd backend
    npm run dev
-   ```
-7. Open your browser and navigate to `http://localhost:5173` to view the app.
 
-## Contributing
+6. Run the frontend:
+   cd ../frontend
+   npm run dev
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+7. Open your browser and visit: 
+   http://localhost:5173
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request (`we will merge within 24 hour`)
+8. To enable Gemini AI chat:
+   Open frontend/src/components/Chatbox.jsx
 
-## Please give a star ⭐ to the repository if you like it.
+   Replace YOUR_API_KEY in:
+   const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY";
 
-## Contact
 
-Abhishek Rajput - [GitHub](https://github.com/exclusiveabhi)
 
-Project Link: [https://github.com/exclusiveabhi/react-job-portal.git](https://github.com/exclusiveabhi/react-job-portal.git)
