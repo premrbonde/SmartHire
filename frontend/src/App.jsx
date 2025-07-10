@@ -16,9 +16,11 @@ import MyApplications from "./components/Application/MyApplications";
 import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
+import Chatbox from "./components/Chatbox";
 
 const App = () => {
-  const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
+  const { isAuthorized, setIsAuthorized, setUser, user } = useContext(Context);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -53,6 +55,10 @@ const App = () => {
           <Route path="/job/me" element={<MyJobs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/* Show Chatbox only if user is logged in */}
+        {isAuthorized && user && <Chatbox currentUser={user} />}
+
         <Footer />
         <Toaster />
       </BrowserRouter>

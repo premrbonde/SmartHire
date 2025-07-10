@@ -18,7 +18,130 @@ const Application = () => {
   const navigateTo = useNavigate();
   const { id } = useParams();
 
-  // Function to handle file input changes with validation
+  // Styles object
+  const styles = {
+    page: {
+      minHeight: "100vh",
+      backgroundColor: "#f5f7fa",
+      padding: "60px 20px",
+      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    container: {
+      maxWidth: "800px",
+      width: "100%",
+      backgroundColor: "white",
+      borderRadius: "12px",
+      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+      padding: "40px",
+      margin: "20px"
+    },
+    header: {
+      textAlign: "center",
+      marginBottom: "40px",
+      color: "#2c3e50",
+      fontSize: "2rem",
+      fontWeight: "600",
+      position: "relative",
+      paddingBottom: "15px"
+    },
+    headerAfter: {
+      content: '""',
+      position: "absolute",
+      bottom: "0",
+      left: "50%",
+      transform: "translateX(-50%)",
+      width: "80px",
+      height: "4px",
+      backgroundColor: "#3498db",
+      borderRadius: "2px"
+    },
+    form: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "20px"
+    },
+    input: {
+      padding: "14px 16px",
+      borderRadius: "8px",
+      border: "1px solid #ddd",
+      fontSize: "16px",
+      transition: "all 0.3s ease",
+      outline: "none"
+    },
+    inputFocus: {
+      borderColor: "#3498db",
+      boxShadow: "0 0 0 2px rgba(52, 152, 219, 0.2)"
+    },
+    textarea: {
+      padding: "14px 16px",
+      borderRadius: "8px",
+      border: "1px solid #ddd",
+      fontSize: "16px",
+      minHeight: "150px",
+      resize: "vertical",
+      transition: "all 0.3s ease",
+      outline: "none"
+    },
+    fileContainer: {
+      marginBottom: "10px"
+    },
+    fileLabel: {
+      display: "block",
+      fontSize: "16px",
+      marginBottom: "8px",
+      color: "#2c3e50",
+      fontWeight: "500"
+    },
+    fileHint: {
+      color: "#7f8c8d",
+      fontSize: "14px",
+      margin: "5px 0 10px 0"
+    },
+    fileInput: {
+      width: "100%",
+      padding: "10px",
+      border: "1px dashed #ddd",
+      borderRadius: "8px",
+      backgroundColor: "#f8f9fa",
+      cursor: "pointer"
+    },
+    error: {
+      color: "#e74c3c",
+      fontSize: "14px",
+      marginTop: "5px"
+    },
+    button: {
+      padding: "16px",
+      borderRadius: "8px",
+      border: "none",
+      backgroundColor: "#3498db",
+      color: "white",
+      fontSize: "16px",
+      fontWeight: "600",
+      cursor: "pointer",
+      transition: "all 0.3s ease",
+      marginTop: "10px"
+    },
+    buttonHover: {
+      backgroundColor: "#2980b9",
+      transform: "translateY(-2px)",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+    },
+    buttonDisabled: {
+      opacity: 0.7,
+      cursor: "not-allowed",
+      backgroundColor: "#95a5a6"
+    },
+    successMessage: {
+      color: "#27ae60",
+      textAlign: "center",
+      marginTop: "20px"
+    }
+  };
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setFileError("");
@@ -28,7 +151,6 @@ const Application = () => {
       return;
     }
     
-    // Check file type
     const allowedTypes = ["image/png", "image/jpeg", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
       setFileError("Please select a valid image file (PNG, JPEG, or WEBP)");
@@ -36,7 +158,6 @@ const Application = () => {
       return;
     }
     
-    // Check file size (limit to 2MB)
     if (file.size > 2 * 1024 * 1024) {
       setFileError("File size should be less than 2MB");
       setResume(null);
@@ -49,7 +170,6 @@ const Application = () => {
   const handleApplication = async (e) => {
     e.preventDefault();
     
-    // Validate form
     if (!name || !email || !phone || !address || !coverLetter) {
       toast.error("Please fill in all fields");
       return;
@@ -94,7 +214,6 @@ const Application = () => {
         "Something went wrong. Please try again later.";
       toast.error(errorMessage);
       
-      // Show specific message for Cloudinary errors
       if (errorMessage.includes("Cloudinary") || errorMessage.includes("api_key")) {
         toast.error("File upload service is currently unavailable. Please try again later.");
       }
@@ -108,74 +227,96 @@ const Application = () => {
   }
 
   return (
-    <section className="application">
-      <div className="container">
-        <h3>Application Form</h3>
-        <form onSubmit={handleApplication}>
+    <section style={styles.page}>
+      <div style={styles.container}>
+        <h3 style={styles.header}>
+          Application Form
+          <span style={styles.headerAfter}></span>
+        </h3>
+        
+        <form onSubmit={handleApplication} style={styles.form}>
           <input
             type="text"
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            style={styles.input}
+            onFocus={(e) => Object.assign(e.currentTarget.style, styles.inputFocus)}
+            onBlur={(e) => Object.assign(e.currentTarget.style, styles.input)}
           />
+          
           <input
             type="email"
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            style={styles.input}
+            onFocus={(e) => Object.assign(e.currentTarget.style, styles.inputFocus)}
+            onBlur={(e) => Object.assign(e.currentTarget.style, styles.input)}
           />
+          
           <input
-            type="number"
+            type="tel"
             placeholder="Your Phone Number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            style={styles.input}
+            onFocus={(e) => Object.assign(e.currentTarget.style, styles.inputFocus)}
+            onBlur={(e) => Object.assign(e.currentTarget.style, styles.input)}
           />
+          
           <input
             type="text"
             placeholder="Your Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
+            style={styles.input}
+            onFocus={(e) => Object.assign(e.currentTarget.style, styles.inputFocus)}
+            onBlur={(e) => Object.assign(e.currentTarget.style, styles.input)}
           />
+          
           <textarea
-            placeholder="Cover Letter..."
+            placeholder="Your Cover Letter..."
             value={coverLetter}
             onChange={(e) => setCoverLetter(e.target.value)}
             required
+            style={styles.textarea}
+            onFocus={(e) => Object.assign(e.currentTarget.style, styles.inputFocus)}
+            onBlur={(e) => Object.assign(e.currentTarget.style, styles.textarea)}
           />
-          <div>
-            <label
-              style={{ textAlign: "start", display: "block", fontSize: "20px" }}
-            >
-              Upload Resume 
-              <p style={{ color: "red", fontSize: "12px", margin: "5px 0 0 0" }}>
-                (Supported formats: PNG, JPEG, WEBP. Max size: 2MB)
-              </p>
-            </label>
+          
+          <div style={styles.fileContainer}>
+            <label style={styles.fileLabel}>Upload Resume</label>
+            <p style={styles.fileHint}>Supported formats: PNG, JPEG, WEBP (Max size: 2MB)</p>
             <input
               type="file"
               accept=".png,.jpg,.jpeg,.webp"
               onChange={handleFileChange}
-              style={{ width: "100%" }}
+              style={styles.fileInput}
             />
-            {fileError && (
-              <p style={{ color: "red", fontSize: "14px", marginTop: "5px" }}>
-                {fileError}
+            {fileError && <p style={styles.error}>{fileError}</p>}
+            {resume && (
+              <p style={{ color: "#27ae60", marginTop: "5px" }}>
+                Selected: {resume.name}
               </p>
             )}
           </div>
+          
           <button 
             type="submit" 
             disabled={loading}
-            style={{ 
-              opacity: loading ? 0.7 : 1,
-              cursor: loading ? "not-allowed" : "pointer" 
+            style={{
+              ...styles.button,
+              ...(loading ? styles.buttonDisabled : {}),
             }}
+            onMouseEnter={(e) => !loading && Object.assign(e.currentTarget.style, styles.buttonHover)}
+            onMouseLeave={(e) => !loading && Object.assign(e.currentTarget.style, styles.button)}
           >
-            {loading ? "Submitting..." : "Send Application"}
+            {loading ? "Submitting..." : "Submit Application"}
           </button>
         </form>
       </div>
