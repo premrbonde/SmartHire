@@ -5,7 +5,7 @@ import { GlobalWorkerOptions } from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker?worker";
 GlobalWorkerOptions.workerSrc = pdfWorker;
 
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBWbZKSLEXc-aRdbZHHXXELUvkikg1aXGk";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={your api key}";
 
 const Chatbox = ({ currentUser }) => {
   const [messages, setMessages] = useState([]);
