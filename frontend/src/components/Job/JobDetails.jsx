@@ -13,7 +13,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://https://smarthire-1-g9mm.onrender.com/api/v1/job/${id}`, {
+      .get(`https://smarthire-1-g9mm.onrender.com/api/v1/job/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

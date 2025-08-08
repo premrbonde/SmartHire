@@ -12,7 +12,7 @@ const Jobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("http://https://smarthire-1-g9mm.onrender.com/api/v1/job/getall", {
+        const res = await axios.get("https://smarthire-1-g9mm.onrender.com/api/v1/job/getall", {
           withCredentials: true,
         });
         setJobs(res.data);

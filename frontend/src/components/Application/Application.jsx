@@ -192,7 +192,7 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "http://https://smarthire-1-g9mm.onrender.com/api/v1/application/post",
+        "https://smarthire-1-g9mm.onrender.com/api/v1/application/post",
         formData,
         {
           withCredentials: true,

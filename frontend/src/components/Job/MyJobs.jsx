@@ -208,7 +208,7 @@ const MyJobs = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          "http://https://smarthire-1-g9mm.onrender.com/api/v1/job/getmyjobs",
+          "https://smarthire-1-g9mm.onrender.com/api/v1/job/getmyjobs",
           { withCredentials: true }
         );
         setMyJobs(data.myJobs);
@@ -241,7 +241,7 @@ const MyJobs = () => {
     try {
       const updatedJob = myJobs.find((job) => job._id === jobId);
       const { data } = await axios.put(
-        `http://https://smarthire-1-g9mm.onrender.com/api/v1/job/update/${jobId}`,
+        `https://smarthire-1-g9mm.onrender.com/api/v1/job/update/${jobId}`,
         updatedJob,
         { withCredentials: true }
       );
@@ -256,7 +256,7 @@ const MyJobs = () => {
   const handleDeleteJob = async (jobId) => {
     try {
       const { data } = await axios.delete(
-        `http://https://smarthire-1-g9mm.onrender.com/api/v1/job/delete/${jobId}`,
+        `https://smarthire-1-g9mm.onrender.com/api/v1/job/delete/${jobId}`,
         { withCredentials: true }
       );
       toast.success(data.message);

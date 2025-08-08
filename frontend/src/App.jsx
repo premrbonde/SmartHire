@@ -25,7 +25,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://https://smarthire-1-g9mm.onrender.com/api/v1/user/getuser",
+          "https://smarthire-1-g9mm.onrender.com/api/v1/user/getuser",
           {
             withCredentials: true,
           }

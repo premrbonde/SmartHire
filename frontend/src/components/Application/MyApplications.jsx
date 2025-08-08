@@ -73,8 +73,8 @@ const MyApplications = () => {
       try {
         setLoading(true);
         const endpoint = user && user.role === "Employer" 
-          ? "http://https://smarthire-1-g9mm.onrender.com/api/v1/application/employer/getall"
-          : "http://https://smarthire-1-g9mm.onrender.com/api/v1/application/jobseeker/getall";
+          ? "https://smarthire-1-g9mm.onrender.com/api/v1/application/employer/getall"
+          : "https://smarthire-1-g9mm.onrender.com/api/v1/application/jobseeker/getall";
         
         const res = await axios.get(endpoint, { withCredentials: true });
         setApplications(res.data.applications);
@@ -97,7 +97,7 @@ const MyApplications = () => {
   const deleteApplication = async (id) => {
     try {
       const res = await axios.delete(
-        `http://https://smarthire-1-g9mm.onrender.com/api/v1/application/delete/${id}`,
+        `https://smarthire-1-g9mm.onrender.com/api/v1/application/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(res.data.message);
