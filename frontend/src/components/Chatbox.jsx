@@ -18,7 +18,7 @@ const Chatbox = ({ currentUser }) => {
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/v1/chat/history/${currentUser._id}`);
+        const res = await axios.get(`http://https://smarthire-1-g9mm.onrender.com/api/v1/chat/history/${currentUser._id}`);
         if (res.data.success) {
           setMessages(res.data.chat.messages || []);
         }
@@ -51,7 +51,7 @@ const Chatbox = ({ currentUser }) => {
       setMessages((prev) => [...prev, { type: "bot", text: reply }]);
       
       // Save chat to backend
-      await axios.post("http://localhost:4000/api/v1/chat/save", {
+      await axios.post("http://https://smarthire-1-g9mm.onrender.com/api/v1/chat/save", {
         userId: currentUser._id,
         role: currentUser.role,
         messages: [...newMessages, { type: "bot", text: reply }],
@@ -99,7 +99,7 @@ const Chatbox = ({ currentUser }) => {
         ]);
         
         // Save to backend
-        await axios.post("http://localhost:4000/api/v1/chat/save", {
+        await axios.post("http://https://smarthire-1-g9mm.onrender.com/api/v1/chat/save", {
           userId: currentUser._id,
           role: currentUser.role,
           messages: [...messages, { type: "bot", text: "Resume analyzed:\n" + reply }],

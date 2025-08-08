@@ -181,7 +181,7 @@ const PostJob = () => {
           };
 
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/job/post",
+        "http://https://smarthire-1-g9mm.onrender.com/api/v1/job/post",
         payload,
         {
           withCredentials: true,

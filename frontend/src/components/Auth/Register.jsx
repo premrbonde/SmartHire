@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "http://https://smarthire-1-g9mm.onrender.com/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {
