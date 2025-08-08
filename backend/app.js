@@ -8,7 +8,7 @@ import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
-import statsRouter from "./routes/statsRoutes.js";
+// import statsRouter from "./routes/statsRoutes.js";
 const app = express();
 config({ path: "./config/config.env" });
 
@@ -34,6 +34,6 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);
 dbConnection();
-app.use("/api/v1/stats", statsRouter);
+// app.use("/api/v1/stats", statsRouter);
 app.use(errorMiddleware);
 export default app;
